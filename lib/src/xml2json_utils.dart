@@ -13,7 +13,8 @@ part of xml2json;
 class _Xml2JsonUtils {
   /// Escape any control characters and quotes for JSONencoding
   static String escapeTextForJson(String text) {
-    String text1 = text.replaceAll('\n', '\\\\n');
+    String text1 = text.replaceAll(RegExp('\\[^n\'\"\&rtb]'), '\\\\');
+    text1 = text1.replaceAll('\n', '\\\\n');
     text1 = text1.replaceAll("\'", "\\\\'");
     text1 = text1.replaceAll('"', '\\"');
     text1 = text1.replaceAll('\&', '\\\\&');
